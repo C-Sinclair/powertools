@@ -1,0 +1,11 @@
+#!/bin/bash
+
+###
+# View Github stars and optionally open them
+###
+
+gh api /user/starred --paginate \
+  | jq '.[] | "\(.full_name) \(.description) ⭐\(.stargazers_count) ⭐"' \
+  | fzf --preview "echo {} |  sed -e 's/ .*//' -e 's/^\"//' | xargs -I{} gh repo view {} | glow -" \
+  | sed -e 's/ .*//' -e 's/^\"//' \
+  | xargs -I{} gh repo view {} -w
