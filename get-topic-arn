@@ -1,0 +1,4 @@
+#!/bin/bash
+
+aws sns list-topics | jq '.Topics[].TopicArn' | fzf | sed -e 's/^"//' -e 's/"$//'
+

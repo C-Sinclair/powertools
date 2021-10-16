@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ARGS="$@"
+node -e "console.log(JSON.stringify($ARGS))"

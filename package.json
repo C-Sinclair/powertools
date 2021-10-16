@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "scripts": {
+    "repl": "node ./repl.js"
+  }
+}

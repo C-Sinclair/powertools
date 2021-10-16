@@ -1,0 +1,12 @@
+#!/bin/bash
+
+###
+# Usage
+### 
+# $ sns-publish "{ test: true, awesome: 'yep' }"
+
+MESSAGE=$(json-stringify $1)
+TOPIC_ARN=$(get-topic-arn)
+
+aws sns publish --topic-arn $TOPIC_ARN --message "$MESSAGE"
+

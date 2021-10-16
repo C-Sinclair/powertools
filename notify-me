@@ -1,0 +1,5 @@
+#!/bin/bash
+
+notify-send "🚀🚀🚀 Deployed Function 🚀🚀🚀" && \
+  aplay ~/Dropbox/audio/Loops/Vol.\ 1/apoplectic\ sax.wav &
+
