@@ -2,5 +2,9 @@
   "type": "module",
   "scripts": {
     "repl": "node ./repl.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^0.4.4",
+    "ts-node": "^10.4.0"
   }
 }

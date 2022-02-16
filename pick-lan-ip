@@ -1,0 +1,16 @@
+#!/bin/bash 
+
+###
+# Will search the local network for connected devices
+# Will pipe the IP address to the next command
+###
+
+SELECTED=$(nmap -sP 192.168.1.0/24 | grep 'Nmap scan report' | sed 's/Nmap scan report for //g' | fzf)
+
+if [[ "$SELECTED" == [0-9]* ]]
+then 
+  echo $SELECTED
+else 
+  echo $SELECTED | sed 's/.*(\(.*\))/\1/g'
+fi
+

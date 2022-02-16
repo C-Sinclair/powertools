@@ -1,0 +1,11 @@
+#!/bin/bash 
+
+SELECTED=$(tmux list-sessions | sed -E 's/:.*$//' | fzf)
+
+if test -z "$TMUX"
+then 
+  # No running tmux instance
+  tmux attach-session -t $SELECTED 
+else 
+  tmux switch-client -t $SELECTED 
+fi

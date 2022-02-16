@@ -1,0 +1,14 @@
+#!/bin/bash 
+
+aws ec2 describe-instances --filters Name=instance-state-name,Values=running \
+--query "Reservations[].Instances[].{ID:InstanceId,Type:InstanceType,Name:Tags[?Key=='Name']|[0].Value}" \
+--output json \
+| jq 'map("\(.ID) \(.Name) - \(.Type)")' \
+| head -n -1 \
+| tail -n +2  \
+| tr -d '"' \
+| fzf \
+| awk '{print $1}' \
+| xclip -sel clipboard
+
+echo "copied id to system clipboard"

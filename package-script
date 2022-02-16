@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cat package.json \
+| jq '.scripts | keys' \
+| head -n -1 \
+| tail -n +2 \
+| tr -d '"' \
+| tr -d ',' \
+| tr -d ' ' \
+| fzf --preview="cat package.json | jq '.scripts[\"{}\"]' | tr -d '\"'" \
+| xargs yarn
