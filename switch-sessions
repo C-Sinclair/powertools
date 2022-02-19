@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-SELECTED=$(tmux list-sessions | sed -E 's/:.*$//' | fzf)
+SELECTED=$(tmux list-sessions | fzf | sed -E 's/:.*$//')
 
 if test -z "$TMUX"
 then 
