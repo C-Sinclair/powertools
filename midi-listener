@@ -1,0 +1,21 @@
+#!/bin/bash
+
+###
+# Listens to Midi notes from LPD8 Midi controller 
+# and translates the notes into commands
+###
+
+aseqdump -p "LPD8" | \
+while IFS=" ," read src ev1 ev2 ch label1 data1 label2 data2 rest; do
+    case "$ev1 $ev2 $data1" in
+        # Mute / unmute Teams
+        "Note on 36" ) \
+          xdotool search --onlyvisible --name Teams \
+          windowactivate --sync %1 \
+          key Ctrl+M \
+          windowactivate $(xdotool getactivewindow);;
+        # Pause / play
+        "Note on 37" ) \
+          xdotool key --clearmodifiers XF86AudioPlay;;
+    esac
+done

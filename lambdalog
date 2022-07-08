@@ -1,0 +1,11 @@
+#!/bin/bash
+
+##
+# This script is used to log a lambda function 
+##
+
+cat serverless.yml \
+  | yq '.functions | keys' \
+  | sed 's/- //g' \
+  | fzf \
+  | xargs -I{} yarn sls logs -f {} -s $STAGE
