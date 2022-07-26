@@ -1,0 +1,7 @@
+#!/bin/bash
+
+tmux list-sessions -F '#{session_name}' \
+| sed '/^$/d' \
+| fzf --reverse --header jump-to-session --preview 'tmux capture-pane -pt {}' \
+| xargs tmux switch-client -t
+
