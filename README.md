@@ -1,5 +1,7 @@
 # POWERTOOLS ⛏⚒🔩️
 
+![Tools](https://media.giphy.com/media/1xkdFjsZwb28W9LBXp/giphy.gif)
+
 ## Github CLI Extensions
 
 ### Install
